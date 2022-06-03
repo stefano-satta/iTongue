@@ -1,24 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Header from './components/common/header/Header';
+import {BrowserRouter, Navigate, Route, Routes} from 'react-router-dom';
+import Dictionary from './pages/Dictionary';
+import Footer from './components/common/footer/Footer';
+import Translate from './pages/Translate';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    // style={{display: 'flex', minHeight: '100vh', flexDirection: 'column'}}
+    <div className="App">  
+      <BrowserRouter>
+        <Header/>
+        {/* style={{flex: '1', padding: '0 0 72px'}} */}
+        <main style={{padding: '0 0 72px'}}>
+          <Routes>
+            <Route path='/' element={<Navigate to='/dictionary' replace/>}/>
+            <Route path='/dictionary' element={<Dictionary/>}/>
+            <Route path='/translate' element={<Translate/>}/>
+          </Routes>
+        </main>
+        <Footer/>
+      </BrowserRouter>
+      
+
     </div>
   );
 }
