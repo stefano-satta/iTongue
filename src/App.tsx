@@ -8,11 +8,11 @@ import Translate from './pages/Translate';
 function App() {
   return (
     // style={{display: 'flex', minHeight: '100vh', flexDirection: 'column'}}
-    <div className="App">  
+    <div className="App" style={{minHeight: '100vh'}}>  
       <BrowserRouter>
         <Header/>
         {/* style={{flex: '1', padding: '0 0 72px'}} */}
-        <main style={{padding: '0 0 72px'}}>
+        <main style={{flex: '1', padding: '0 0 72px'}}>
           <Routes>
             <Route path='/' element={<Navigate to='/dictionary' replace/>}/>
             <Route path='/dictionary' element={<Dictionary/>}/>

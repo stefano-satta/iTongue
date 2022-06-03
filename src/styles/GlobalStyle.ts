@@ -4,7 +4,7 @@ export const GlobalStyle = createGlobalStyle`
     @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
 
     :root {
-        --color-primary: #fb9847;
+        --color-primary: #f89776;
         --color-secondary: #c0d8fb;
         --color-white: #fff;
         --color-black: #000;

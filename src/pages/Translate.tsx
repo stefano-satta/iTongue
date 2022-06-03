@@ -7,8 +7,9 @@ import {
   Tabs,
 } from "@chakra-ui/react";
 import { AxiosError } from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import LangSelectionBar from "../components/feature/translate/lang-selection-bar/LangSelectionBar";
 import FileTranslate from "../components/feature/translate/translate-file/FileTranslate";
 import useFetch from "../hooks/useFetch";
 import { getLanguages } from "../utils/api";
@@ -16,6 +17,7 @@ import { getLanguages } from "../utils/api";
 const Translate = () => {
   const { register } = useForm();
   const {data, setData, error, setError, isLoading, setLoading} = useFetch<Language[]>();
+  const [lang, setLang] = useState<{fromLang: string, toLang: string}>({fromLang: '', toLang: ''});
 
   useEffect(() => {
     getAllLanguages();
@@ -30,13 +32,21 @@ const Translate = () => {
         .finally(() => setLoading(false))
   }
 
+  const handleChangeLangs = (langs: {fromLang: string, toLang: string}) => {
+    setLang({fromLang: langs.fromLang, toLang: langs.toLang});
+  }
+
+  console.log('lingue', lang)
+
   return (
     <Container maxWidth={"container.xl"}>
       <Tabs variant="soft-rounded" colorScheme="green" align="start">
         <TabList>
-          <Tab>Text</Tab>
-          <Tab>Document</Tab>
+          <Tab className="mr-5">Text</Tab>
+          <Tab>File</Tab>
         </TabList>
+
+        <LangSelectionBar langsList={data || []} onChangeLangEvt={handleChangeLangs}/>
 
         <TabPanels>
           <TabPanel>
@@ -50,7 +60,7 @@ const Translate = () => {
             </p>
           </TabPanel>
           <TabPanel>
-            <FileTranslate/>
+            <FileTranslate langFrom={lang.fromLang} langTo={lang.toLang}/>
           </TabPanel>
         </TabPanels>
       </Tabs>

@@ -1,7 +1,7 @@
 import { Select, Text } from "@chakra-ui/react";
 import { ChangeEvent, SelectHTMLAttributes, useMemo } from "react";
 
-type Option = { label: string; value: string | number };
+export type Option = { label: string; value: string | number };
 
 interface ISelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
   optionsData: Option[];
@@ -13,7 +13,19 @@ interface ISelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
 }
 
 const SelectForm = (props: ISelectProps) => {
-  const { placeholder, label, register, formControlName, options, optionsData, onChangeEvt, disabled, className} = props;
+  const {
+    placeholder,
+    label,
+    register,
+    formControlName,
+    options,
+    optionsData,
+    onChangeEvt,
+    disabled,
+    className,
+    defaultValue = null
+  } = props;
+
   const formProps = useMemo(() => {
     return register && formControlName
       ? { ...register(formControlName, options) }
@@ -27,17 +39,20 @@ const SelectForm = (props: ISelectProps) => {
   return (
     <>
       {label && <Text mb="8px">{label}</Text>}
-      <Select className={className}
-        {...formProps} 
+      <Select
+        className={className}
+        {...formProps}
         placeholder={placeholder}
         onChange={handleOnChange}
         disabled={disabled}
-        isRequired={options?.required}>
-          {
-              optionsData.map( option => (
-                <option value={option.value}>{option.label}</option>
-              ))
-          }
+        isRequired={options?.required}
+        defaultValue={defaultValue}
+      >
+        {optionsData.map((option) => (
+          <option value={option.value} key={`${option.value}-${option.label}`}>
+            {option.label}
+          </option>
+        ))}
       </Select>
     </>
   );
