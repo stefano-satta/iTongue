@@ -17,7 +17,7 @@ import { getLanguages } from "../utils/api";
 const Translate = () => {
   const { register } = useForm();
   const {data, setData, error, setError, isLoading, setLoading} = useFetch<Language[]>();
-  const [lang, setLang] = useState<{fromLang: string, toLang: string}>({fromLang: '', toLang: ''});
+  const [langSelected, setLangSelected] = useState<{fromLang: string, toLang: string}>({fromLang: '', toLang: ''});
 
   useEffect(() => {
     getAllLanguages();
@@ -32,11 +32,9 @@ const Translate = () => {
         .finally(() => setLoading(false))
   }
 
-  const handleChangeLangs = (langs: {fromLang: string, toLang: string}) => {
-    setLang({fromLang: langs.fromLang, toLang: langs.toLang});
+  const handleChangeLangs = (langs: {fromLang?: string, toLang?: string}) => {
+    setLangSelected({...langSelected, ...langs})
   }
-
-  console.log('lingue', lang)
 
   return (
     <Container maxWidth={"container.xl"}>
@@ -60,7 +58,7 @@ const Translate = () => {
             </p>
           </TabPanel>
           <TabPanel>
-            <FileTranslate langFrom={lang.fromLang} langTo={lang.toLang}/>
+            <FileTranslate langFrom={langSelected.fromLang} langTo={langSelected.toLang}/>
           </TabPanel>
         </TabPanels>
       </Tabs>

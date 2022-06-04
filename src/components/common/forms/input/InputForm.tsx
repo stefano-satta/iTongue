@@ -21,6 +21,7 @@ const InputForm = (props: IInputProps) => {
     placeholder,
     onChangeEvt,
     type,
+    accept,
     width
   } = props;
 
@@ -45,6 +46,7 @@ const InputForm = (props: IInputProps) => {
         variant={variant}
         onChange={handleOnChange}
         width={width}
+        accept={accept}
       />
     </>
   );
