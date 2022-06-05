@@ -1,4 +1,4 @@
-import { Box, Button, Heading } from "@chakra-ui/react";
+import { Alert, AlertIcon, Box, Button, Heading } from "@chakra-ui/react";
 import { AxiosError } from "axios";
 import { useForm } from "react-hook-form";
 import useFetch from "../../../../hooks/useFetch";
@@ -6,32 +6,23 @@ import { fileTranslation } from "../../../../utils/api";
 import InputForm from "../../../common/forms/input/InputForm";
 import { Text } from '@chakra-ui/react'
 
-interface IFileTranslateProps {
-  langFrom: string;
-  langTo: string;
-}
 
 
-const FileTranslate = (props: IFileTranslateProps) => {
+const FileTranslate = (props: ITranslateProps) => {
   const {langFrom, langTo} = props;
   const {register, handleSubmit, formState} = useForm({mode: 'onChange'});
   const {data, setData, error, setError, isLoading, setLoading} = useFetch<IFileTranslationResponse>();
-
-  console.log('ft langs ----> ', langFrom, langTo);
-  
-
 
   const handleOnSubmit = (data: any) => {
     console.log(data.file[0])
     setError(null);
     console.log('click vtn')
     if (langFrom && langTo && data) {
+      setLoading(true);
       const formData: FormData = new FormData();
       formData.append('file', data.file[0]);
       formData.append('source', langFrom);
       formData.append('target', langTo);
-
-      setLoading(true);
       fileTranslation(formData)
         .then((res: IFileTranslationResponse) => {
           setData(res);
@@ -50,7 +41,8 @@ const FileTranslate = (props: IFileTranslateProps) => {
 
   return (
       <Box w="100%" p={4} textAlign="center">
-        <Heading as='h3' className="mb-2">Seleziona un documento</Heading>
+        <>
+        <Heading as='h3' className="mb-2">Select a document</Heading>
         <Text fontSize="md" color="gray" className="mb-10">Accepted format file: .txt, .odt, .odp, .docx, .pptx</Text>
         <form onSubmit={handleSubmit(handleOnSubmit)}>
           <InputForm type="file" 
@@ -65,7 +57,15 @@ const FileTranslate = (props: IFileTranslateProps) => {
             </Button>
           </div>
         </form>
-        
+
+        { error && 
+          <Alert status='error' className="mt-15" textAlign="left">
+            <AlertIcon />
+            Please select languages and document. <br />
+            { (error as IFileTranslationResponse).error}
+          </Alert>
+        }
+        </>
       </Box>
   );
 };

@@ -5,4 +5,15 @@ type Language = {
 
 interface IFileTranslationResponse {
     translatedFileUrl: string;
+    error?: string;
+}
+
+interface ITranslateProps {
+    langFrom: string;
+    langTo: string;
+}
+
+interface ITextTranslationResponse {
+    translatedText: string;
+    error?: string;
 }

@@ -1,7 +1,7 @@
 import { Input, Text } from "@chakra-ui/react";
 import { ChangeEvent, InputHTMLAttributes, useMemo } from "react";
 
-type IInputProps = {
+type InputProps = {
   label?: string;
   register?: any;
   formControlName?: string;
@@ -11,7 +11,7 @@ type IInputProps = {
   width?: string;
 } & InputHTMLAttributes<HTMLInputElement>;
 
-const InputForm = (props: IInputProps) => {
+const InputForm = (props: InputProps) => {
   const {
     label,
     register,

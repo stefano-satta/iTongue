@@ -4,8 +4,9 @@ const http = axios.create({});
 
 const API_URL = {
     wordMeaning: 'https://api.dictionaryapi.dev/api/v2/entries/en/:word',
-    languages: 'https://libretranslate.de/languages',
-    file_translate: 'https://libretranslate.de/translate_file'
+    languages: 'https://translate.argosopentech.com/languages',
+    file_translate: 'https://translate.argosopentech.com/translate_file',
+    text_translation: 'https://translate.argosopentech.com/translate'
 }
 
 const buildApiUrl = (api: string, params?: {[key: string]: string}) => {
@@ -33,9 +34,15 @@ export const getLanguages = async (): Promise<Language[]> => {
     return response.data;
 }
 
-export const fileTranslation = async (data: FormData) => {
+export const fileTranslation = async (data: FormData): Promise<IFileTranslationResponse> => {
     const url = buildApiUrl(API_URL.file_translate);
     const headers = {'content-type': 'multipart/form-data'};
     const response = await http.post<IFileTranslationResponse>(url, data, {headers});
+    return response.data;
+}
+
+export const getTextTranslation = async (data: FormData): Promise<ITextTranslationResponse> => {
+    const url = buildApiUrl(API_URL.text_translation);
+    const response = await http.post<ITextTranslationResponse>(url, data);
     return response.data;
 }

@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import LangSelectionBar from "../components/feature/translate/lang-selection-bar/LangSelectionBar";
 import FileTranslate from "../components/feature/translate/translate-file/FileTranslate";
+import TextTranslate from "../components/feature/translate/translate-text/TextTranslate";
 import useFetch from "../hooks/useFetch";
 import { getLanguages } from "../utils/api";
 
@@ -48,14 +49,7 @@ const Translate = () => {
 
         <TabPanels>
           <TabPanel>
-            <p>
-              fdjfjfs sfsdjfcsjfsjdfljs fcjsflkjsdfjsòf sdfjksdjfdsjfljdsfj
-              sdfjlsdjf sdòjflsdjf sdjfsjdfl jsdlfjsdlkfjsdl fjsdlòkfjcsdkfj
-              csdkljfc sjdfsjdfkljsdfsdfjs fsjfkljsdfjsdkjflksdjfkljs
-              ckdfjskldjfc klsdjflkcsjdfkljsdklfjsdkljfc lksdjf lksdjfcklsdjf
-              cljsdf cjsdfkjcsdlfj sfjsjd fjsdklfjsdklfcjsdljf cslkfjsdlfjsd
-              fvdsjfs jfsdkfjklsdjfoisjfdslf djfsòa
-            </p>
+            <TextTranslate langFrom={langSelected.fromLang} langTo={langSelected.toLang}/>
           </TabPanel>
           <TabPanel>
             <FileTranslate langFrom={langSelected.fromLang} langTo={langSelected.toLang}/>
