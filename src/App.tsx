@@ -12,7 +12,7 @@ function App() {
       <BrowserRouter>
         <Header/>
         {/* style={{flex: '1', padding: '0 0 72px'}} */}
-        <main style={{flex: '1', padding: '0 0 72px'}}>
+        <main style={{flex: '1', padding: '0 30px 72px'}}>
           <Routes>
             <Route path='/' element={<Navigate to='/dictionary' replace/>}/>
             <Route path='/dictionary' element={<Dictionary/>}/>

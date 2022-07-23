@@ -22,7 +22,8 @@ const InputForm = (props: InputProps) => {
     onChangeEvt,
     type,
     accept,
-    width
+    width,
+    className
   } = props;
 
   const formProps = useMemo(() => {
@@ -42,6 +43,7 @@ const InputForm = (props: InputProps) => {
       <Input
         {...formProps}
         type={type}
+        className={className}
         placeholder={placeholder}
         variant={variant}
         onChange={handleOnChange}

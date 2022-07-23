@@ -32,24 +32,24 @@ const Dictionary = () => {
     return (
         <>
             <SimpleGrid columns={{sm: 1, lg:2}} spacing={1}>
-                <Box display="flex" flexDirection="column" justifyContent="center" >
-                    <div>
+                <Box display="flex" flexDirection="column" justifyContent="center" width={'90%'} alignItems="center" order={{sm:2, lg: 1}}>
+                    <div style={{width: '75%'}}>
                         <Text fontSize='5xl' align='left' fontWeight='bold' className="pb-10">Get a quick, <br /> Free translation</Text>
-                        <div className="d-flex flex-column align-content-start pr-10">
-                            <InputForm register={register} formControlName="prova" onChangeEvt={handleChangeWord}/>
-                            <Button isLoading={isLoading} onClick={getMeaning} className="mt-5" >Search</Button>
+                        <div className="d-flex justify-content-center align-items-center">
+                            <InputForm register={register} formControlName="prova" onChangeEvt={handleChangeWord} className="mr-10"/>
+                            <Button isLoading={isLoading} onClick={getMeaning} className="bg-primary text-white">Search</Button>
                         </div>
-
                     </div>
-
                 </Box>
-                <Box display="flex" flexDirection="column" justifyContent="center" >
-                    <Image src='/dictionary-wall.png' objectFit='cover'/>
+                <Box display="flex" flexDirection="column" justifyContent="center" order={{sm:1, lg: 2}}>
+                    <div style={{width: '75%'}} className="mx-auto">
+                        <Image src='/dictionary-wall.png' objectFit='cover'/>
+                    </div>
                 </Box>
             </SimpleGrid>
 
 
-            <SimpleGrid columns={{sm: 1}} spacing={10} marginTop={'100px'}>
+            <SimpleGrid columns={{sm: 1}} spacing={10} marginTop={'100px'} padding={{sm: '0 10px', md: '0 40px'}}>
                 { error ? <NoResults title={(error as {title: string}).title} icon={<WarningIcon w={6} h={6}/>}/> : data ? (<>
                     <Phonetics word={data[0].word} data={data[0].phonetics}/>
                     <Meaning data={data[0].meanings}/>

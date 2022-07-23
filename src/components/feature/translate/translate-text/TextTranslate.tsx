@@ -14,12 +14,10 @@ const TextTranslate = (props: ITranslateProps) => {
 
   useEffect(() => {
     getTranslation();
-    
   }, [langFrom, langTo, textToSearch])
   
 
   const getTranslation = () => {
-    console.log('gt ',textToSearch);
     clearTimeout(timer);
     if (langFrom && langTo && textToSearch) {
       timer = setTimeout(() => {
