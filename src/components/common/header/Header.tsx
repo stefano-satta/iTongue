@@ -1,55 +1,52 @@
-import { Box,Stack,Heading,Flex,Text,useDisclosure } from "@chakra-ui/react";
-import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
+import { Button, Dropdown, Menu, Navbar } from "react-daisyui";
 import { Link } from "react-router-dom";
 
-const Header = (props: unknown) => {
-    const { isOpen, onOpen, onClose } = useDisclosure();
-    const handleToggle = () => (isOpen ? onClose() : onOpen());
-
+const Header = () => {
     return (
-        <Flex
-            as="header"
-            align="center"
-            justify="space-between"
-            wrap="wrap"
-            padding={6}
-            {...props}>
-                <Flex align="center" mr={5}>
-                    <Heading as="h1" size="lg" letterSpacing={"tighter"}>
-                        <Link to="/">iTongue</Link>
-                    </Heading>
-                </Flex>
-
-                <Box display={{ base: "block", md: "none" }} onClick={handleToggle}>
-                    { isOpen ? <CloseIcon boxSize={'20px'}/>: <HamburgerIcon boxSize={'27px'}/>}
-                </Box>
-            
-                <Stack
-                    direction={{ base: "column", md: "row" }}
-                    display={{ base: isOpen ? "block" : "none", md: "flex" }}
-                    width={{ base: "full", md: "auto" }}
-                    justifyContent={{base: "center", md: "end"}}
-                    alignItems="center"
-                    flexGrow={1}
-                    mt={{ base: 4, md: 0 }}
-                    as="nav">
-                        <Text marginRight={{lg: '20px'}}><Link to="/">Dictionary</Link></Text>
-                        <Text><Link to="/translate">Translate</Link></Text>
-                </Stack>
-            
-
-            {/* <Box
-                display={{ base: isOpen ? "block" : "none", md: "block" }}
-                mt={{ base: 4, md: 0 }}
-            >
-                <Button
-                variant="outline"
-                _hover={{ bg: "teal.700", borderColor: "teal.700" }}
-                >
-                    go to my site ???
-                </Button>
-            </Box> */}
-        </Flex>
+        <div className="flex w-full component-preview p-4 items-center justify-center gap-2">
+            <Navbar>
+            <Navbar.Start>
+                <Dropdown>
+                    <Button color="ghost" tabIndex={0} className="lg:hidden mr-2">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-5 w-5"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor">
+                                <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M4 6h16M4 12h8m-8 6h16"/>
+                        </svg>
+                    </Button>
+                    <Dropdown.Menu tabIndex={0} className="w-52 menu-compact mt-3">
+                        <Dropdown.Item href="/">
+                            Dictionary
+                        </Dropdown.Item>
+                        <Dropdown.Item href="/translate">
+                            Translate
+                        </Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
+                <Link to="/" className="text-2xl font-bold">iTongue</Link>
+            </Navbar.Start>
+            <Navbar.Center className="hidden lg:flex">
+                <Menu horizontal className="p-0">
+                    <Menu.Item className="">
+                        <Link to="/">Dictionary</Link>
+                    </Menu.Item>
+                    <Menu.Item className="ml-2">
+                        <Link to="/translate">Translate</Link>
+                    </Menu.Item>
+                </Menu>
+            </Navbar.Center>
+            {/* TODO: added toggle light/dark theme */}
+            <Navbar.End>
+            </Navbar.End>
+            </Navbar>
+        </div>
     )
 }
 

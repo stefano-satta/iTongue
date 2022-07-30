@@ -1,5 +1,5 @@
-import { Select, Text } from "@chakra-ui/react";
-import { ChangeEvent, SelectHTMLAttributes, useMemo } from "react";
+import {SelectHTMLAttributes, useMemo} from "react";
+import { Select } from "react-daisyui";
 
 export type Option = { label: string; value: string | number };
 
@@ -22,8 +22,7 @@ const SelectForm = (props: ISelectProps) => {
     optionsData,
     onChangeEvt,
     disabled,
-    className,
-    defaultValue = null
+    className
   } = props;
 
   const formProps = useMemo(() => {
@@ -32,27 +31,34 @@ const SelectForm = (props: ISelectProps) => {
       : null;
   }, [register, formControlName, options]);
 
-  const handleOnChange = (event: ChangeEvent<HTMLSelectElement>) => {
-    onChangeEvt?.(event?.target.value);
+  const handleOnChange = (langSelected: string) => {
+    onChangeEvt?.(langSelected);
   };
 
   return (
     <>
-      {label && <Text mb="8px">{label}</Text>}
+      { label && 
+        <label className="label">
+          <span className="label-text">{label}</span>
+        </label>
+      }
       <Select
         className={className}
         {...formProps}
         placeholder={placeholder}
         onChange={handleOnChange}
         disabled={disabled}
-        isRequired={options?.required}
-        defaultValue={defaultValue}
-      >
-        {optionsData.map((option) => (
-          <option value={option.value} key={`${option.value}-${option.label}`}>
-            {option.label}
-          </option>
-        ))}
+        required={options?.required}
+        defaultValue={undefined}
+        >
+          {optionsData.map((option) => (
+            <Select.Option value={option.value} 
+                           key={`${option.value}-${option.label}`} 
+                           disabled={!option.value} 
+                           selected={!option.value}>
+              {option.label}
+            </Select.Option>
+          ))}
       </Select>
     </>
   );

@@ -6,23 +6,20 @@ import Footer from './components/common/footer/Footer';
 import Translate from './pages/Translate';
 
 function App() {
+  
   return (
-    // style={{display: 'flex', minHeight: '100vh', flexDirection: 'column'}}
-    <div className="App" style={{minHeight: '100vh'}}>  
+    <div className="App bg-wall">
       <BrowserRouter>
         <Header/>
-        {/* style={{flex: '1', padding: '0 0 72px'}} */}
-        <main style={{flex: '1', padding: '0 30px 72px'}}>
+        <div className="container mx-auto py-5">
           <Routes>
             <Route path='/' element={<Navigate to='/dictionary' replace/>}/>
             <Route path='/dictionary' element={<Dictionary/>}/>
             <Route path='/translate' element={<Translate/>}/>
           </Routes>
-        </main>
+        </div>
         <Footer/>
       </BrowserRouter>
-      
-
     </div>
   );
 }

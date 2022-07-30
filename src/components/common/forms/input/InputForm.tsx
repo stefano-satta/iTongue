@@ -1,12 +1,11 @@
-import { Input, Text } from "@chakra-ui/react";
 import { ChangeEvent, InputHTMLAttributes, useMemo } from "react";
+import { Input } from "react-daisyui";
 
 type InputProps = {
   label?: string;
   register?: any;
   formControlName?: string;
   options?: { required?: boolean; maxLength?: number; pattern?: string };
-  variant?: "outline" | "filled" | "flushed" | "unstyled";
   onChangeEvt?: (word: string) => void;
   width?: string;
 } & InputHTMLAttributes<HTMLInputElement>;
@@ -17,7 +16,6 @@ const InputForm = (props: InputProps) => {
     register,
     formControlName,
     options,
-    variant,
     placeholder,
     onChangeEvt,
     type,
@@ -39,17 +37,21 @@ const InputForm = (props: InputProps) => {
 
   return (
     <>
-      {label && <Text mb="8px">{label}</Text>}
-      <Input
-        {...formProps}
-        type={type}
-        className={className}
-        placeholder={placeholder}
-        variant={variant}
-        onChange={handleOnChange}
-        width={width}
-        accept={accept}
-      />
+      <div className="flex w-full component-preview p-4 items-center justify-center gap-2">
+        { label && 
+          <label className="label">
+            <span className="label-text">{label}</span>
+          </label>
+        }
+        <Input
+          {...formProps}
+          type={type}
+          className={className}
+          placeholder={placeholder}
+          onChange={handleOnChange}
+          width={width}
+          accept={accept}/>
+      </div>
     </>
   );
 };

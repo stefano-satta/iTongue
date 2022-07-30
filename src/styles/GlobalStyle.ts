@@ -8,6 +8,7 @@ export const GlobalStyle = createGlobalStyle`
         --color-white: #fff;
         --color-black: #000;
         --color-base-text: #343645;
+        --color-wall: #f3f2ff;
     }
 
     body {
@@ -25,6 +26,9 @@ export const GlobalStyle = createGlobalStyle`
     }
     .bg-primary {
         background-color: var(--color-primary);
+    }
+    .bg-wall {
+        background-color: var(--color-wall);
     }
     .text-white {
         color: var(--color-white);

@@ -1,20 +1,19 @@
 import axios from "axios";
 
 const http = axios.create({});
-
+const BASE_URL = 'https://libretranslate.de';
 const API_URL = {
-    wordMeaning: 'https://api.dictionaryapi.dev/api/v2/entries/en/:word',
-    languages: 'https://translate.argosopentech.com/languages',
-    file_translate: 'https://translate.argosopentech.com/translate_file',
-    text_translation: 'https://translate.argosopentech.com/translate'
+    wordMeaning: `${BASE_URL}/api/v2/entries/en/:word`,
+    languages: `${BASE_URL}/languages`,
+    file_translate: `${BASE_URL}/translate_file`,
+    text_translation: `${BASE_URL}/translate`
 }
 
 const buildApiUrl = (api: string, params?: {[key: string]: string}) => {
     if (params) {
         Object.keys(params).forEach(key => {
-            console.log('chiave', key)
             api = api.replace(`:${key}`, params[key])
-            console.log('api ', api)
+            console.log('api request --> ', api)
         });
     }
     return api;
