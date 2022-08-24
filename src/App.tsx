@@ -8,10 +8,10 @@ import Translate from './pages/Translate';
 function App() {
   
   return (
-    <div className="App bg-wall">
+    <div className=" h-screen">
       <BrowserRouter>
         <Header/>
-        <div className="container mx-auto py-5">
+        <div className="container mx-auto p-6 flex-grow">
           <Routes>
             <Route path='/' element={<Navigate to='/dictionary' replace/>}/>
             <Route path='/dictionary' element={<Dictionary/>}/>

@@ -50,7 +50,7 @@ const FileTranslate = (props: ITranslateProps) => {
               formControlName="file"
               accept=".txt, .odt, .odp, .docx, .pptx"/>
             <div className="mt-10">
-              <Button type="submit" color="primary" loading={isLoading}>
+              <Button type="submit" color="primary" loading={isLoading} className="rounded-full">
                 Translate
               </Button>
             </div>

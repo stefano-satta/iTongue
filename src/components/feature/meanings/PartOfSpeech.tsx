@@ -1,4 +1,3 @@
-import { Box, Heading, Text } from "@chakra-ui/react";
 import React from "react";
 import {capitalize} from "../../../utils/utility";
 import Definitions from "./Definitions";
@@ -10,12 +9,12 @@ interface PartOfSpeechProps {
 
 const PartOfSpeech = ({data}: PartOfSpeechProps) => {
     return (
-        <Box p={10} textAlign="left">
-            <Heading fontSize='lg' mb={3}>{capitalize(data.partOfSpeech)}</Heading>
-            { data.synonyms.length > 0 && (<><Heading fontSize='md' mt={5}>Synonyms:</Heading><Text pl={2}>{data.synonyms?.join(', ')}</Text></>)}
-            { data.antonyms.length > 0 && (<><Heading fontSize='md' mt={5}>Antonyms:</Heading><Text pl={2}>{data.antonyms?.join(', ')}</Text></>)}
+        <div className="p-10 text-left">
+            <h1 className="mb-4">{capitalize(data.partOfSpeech)}</h1>
+            { data.synonyms.length > 0 && (<><h1>Synonyms:</h1><p>{data.synonyms?.join(', ')}</p></>)}
+            { data.antonyms.length > 0 && (<><h1 className="mt-6">Antonyms:</h1><p className="pl-2">{data.antonyms?.join(', ')}</p></>)}
             <Definitions data={data.definitions}/>
-        </Box>
+        </div>
     )
 }
 

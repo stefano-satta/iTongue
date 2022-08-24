@@ -1,9 +1,9 @@
-import { Alert, AlertIcon, Box, Center, Divider, Flex, HStack, Spinner, Stack, StackDivider, useBreakpointValue } from "@chakra-ui/react";
 import useFetch from "../../../../hooks/useFetch";
 import { getTextTranslation } from "../../../../utils/api";
 import TextAreaForm from "../../../common/forms/textarea/TextAreaForm";
 import { AxiosError } from "axios";
 import { useEffect, useState } from "react"
+import Spinner from "../../../common/spinner/Spinner";
 
 
 const TextTranslate = (props: ITranslateProps) => {
@@ -13,12 +13,12 @@ const TextTranslate = (props: ITranslateProps) => {
   let timer: ReturnType<typeof setTimeout>;
 
   useEffect(() => {
+    clearTimeout(timer);
     getTranslation();
   }, [langFrom, langTo, textToSearch])
   
 
   const getTranslation = () => {
-    clearTimeout(timer);
     if (langFrom && langTo && textToSearch) {
       timer = setTimeout(() => {
         setError(null);
@@ -42,31 +42,27 @@ const TextTranslate = (props: ITranslateProps) => {
   }
 
   return (
-      <>
-        <Stack direction={{ base: "column", md: "row" }} className="mb-10" shadow='md' borderWidth='1px' borderRadius="10px" minHeight={{sm: '300px', md: '200px'}}>
-        {/* divider={<StackDivider borderColor='gray.200' marginInlineStart={'0'} marginInlineEnd={'0'}/>}     */}
-            <Box w={{base: '100%', md: '50%'}}>
-                <TextAreaForm onChangeEvt={setTextToSearch} 
-                    style={{border: 'none', margin: 0, padding: '10px', height: '100%', width: '100%'}} 
-                    placeholder="Insert text here"/>
-            </Box>
-            <Center>
-                <Divider variant={useBreakpointValue({xs: 'horizontal', md: 'vertical'})} />
-            </Center>
-            <Box w={{base: '100%', md: '50%'}} padding="10px" bg="grey.500" borderRadius="0 10px 10px 0">
-                    { isLoading && <Spinner size='sm' />}
-                    { data?.translatedText }
-            </Box>
-        </Stack>
+    <div className="w-full text-center bg-white dark:bg-slate-800 rounded-lg shadow-lg" style={{minHeight: '350px'}}>
+      <div className="grid sm:grid-cols-1 md:grid-cols-2 divide-x h-min" style={{minHeight: '350px'}}>
+        <div className="h-full">
+          <TextAreaForm onChangeEvt={setTextToSearch}
+                      className="h-full w-full p-4 border-none m-0"
+                      placeholder="Insert text here"/>
+        </div>
+        <div className="text-left p-3">
+          { isLoading && <Spinner/>}
+          { data?.translatedText }
+        </div>
+      </div>
+    </div>
 
-        { error && 
-            <Alert status='error' className="mt-15" textAlign="left">
-                <AlertIcon />
-                Please select languages and insert text. <br />
-                { (error as ITextTranslationResponse).error}
-            </Alert>
-        }
-      </>
+        // { error && 
+        //     <Alert status='error' className="mt-15" textAlign="left">
+        //         <AlertIcon />
+        //         Please select languages and insert text. <br />
+        //         { (error as ITextTranslationResponse).error}
+        //     </Alert>
+        // }
   );
 }
 

@@ -1,4 +1,3 @@
-import {Heading, Text} from "@chakra-ui/react";
 import React, {useId} from "react";
 
 
@@ -10,10 +9,10 @@ const Definitions = ({data}: DefinitionsProps) => {
     const definitionId = useId();
 
     return (<>
-        <Heading fontSize='md' mt={5}>Definition:</Heading>
+        <h1 className="mt-6">Definition:</h1>
         {
             data.map((definition, index) => (
-                <Text mb={3} pl={2} key={`${definitionId}-${index}`}>{definition.definition}</Text>
+                <p className="mb-4 pl-2" key={`${definitionId}-${index}`}>{definition.definition}</p>
             ))
         }
     </>)

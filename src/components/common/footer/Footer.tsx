@@ -3,7 +3,7 @@ import { Footer as FooterDaisy } from "react-daisyui";
 const Footer = () => {
 
     return (
-        <FooterDaisy className="items-center p-4 bg-neutral text-neutral-content">
+        <FooterDaisy className="items-center p-4 bg-neutral text-neutral-content sticky top-[100vh]">
             <div className="items-center grid-flow-col">
                 <p className="text-">&copy; 2022 Stefano Satta</p>
             </div> 

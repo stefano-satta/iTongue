@@ -1,12 +1,13 @@
 import axios from "axios";
 
 const http = axios.create({});
-const BASE_URL = 'https://libretranslate.de';
+const BASE_URL_TRANSLATION = 'https://translate.argosopentech.com';
+const BASE_ULR_DICTIONARY = 'https://api.dictionaryapi.dev'
 const API_URL = {
-    wordMeaning: `${BASE_URL}/api/v2/entries/en/:word`,
-    languages: `${BASE_URL}/languages`,
-    file_translate: `${BASE_URL}/translate_file`,
-    text_translation: `${BASE_URL}/translate`
+    wordMeaning: `${BASE_ULR_DICTIONARY}/api/v2/entries/en/:word`,
+    languages: `${BASE_URL_TRANSLATION}/languages`,
+    file_translate: `${BASE_URL_TRANSLATION}/translate_file`,
+    text_translation: `${BASE_URL_TRANSLATION}/translate`
 }
 
 const buildApiUrl = (api: string, params?: {[key: string]: string}) => {
@@ -22,7 +23,6 @@ const buildApiUrl = (api: string, params?: {[key: string]: string}) => {
 
 export const getWordMeaning = async (word: string): Promise<Dictionary[]> => {
     const url = buildApiUrl(API_URL.wordMeaning, {word})
-    console.log('url finale ',url)
     const response = await http.get<Dictionary[]>(url);
     return response.data;
 }

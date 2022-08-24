@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --color-primary: #f89776;
+    --color-primary-less-opacity: #f89776a2;
+    --color-secondary: #c0d8fb;
+    --color-white: #fff;
+    --color-black: #000;
+    --color-base-text: #343645;
+    --color-wall: #f3f2ff;
+}
+
+html {
+    background-color: #f3f2ff !important;
+}
+
+.tab-active {
+    border: 2px solid var(--color-primary) !important;
+    background-color: var(--color-primary-less-opacity) !important;
+    border-radius: 9999px !important;
+}

@@ -31,28 +31,25 @@ const InputForm = (props: InputProps) => {
   }, [register, formControlName, options]);
 
   const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
     onChangeEvt?.(e.target.value);
   };
 
   return (
-    <>
-      <div className="flex w-full component-preview p-4 items-center justify-center gap-2">
-        { label && 
-          <label className="label">
-            <span className="label-text">{label}</span>
-          </label>
-        }
-        <Input
-          {...formProps}
-          type={type}
-          className={className}
-          placeholder={placeholder}
-          onChange={handleOnChange}
-          width={width}
-          accept={accept}/>
-      </div>
-    </>
+    <div className="w-full component-preview gap-2">
+      { label && 
+        <label className="label">
+          <span className="label-text">{label}</span>
+        </label>
+      }
+      <Input
+        {...formProps}
+        type={type}
+        className={className}
+        placeholder={placeholder}
+        onChange={handleOnChange}
+        width={width}
+        accept={accept}/>
+    </div>
   );
 };
 

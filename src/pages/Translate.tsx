@@ -40,7 +40,7 @@ const Translate = () => {
 
   return (
     <div className="py-5">
-      <Tabs size="lg" boxed className="shadown-xl bg-transparent rounded-full" onChange={handleChangeTabs}>
+      <Tabs size="lg" boxed className="shadown-xl bg-transparent" onChange={handleChangeTabs}>
         <Tabs.Tab value="TXT" className={tab === TabEnum.TXT ? 'tab-active': ''}>Text</Tabs.Tab>
         <Tabs.Tab value="FILE" className={tab === TabEnum.FILE ? 'tab-active': ''}>File</Tabs.Tab>
       </Tabs>
