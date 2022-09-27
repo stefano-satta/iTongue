@@ -30,7 +30,7 @@ const Header = () => {
                             </Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
-                    <Link to="/" className="text-2xl font-bold">iTongue</Link>
+                    <Link to="/iTongue" className="text-2xl font-bold">iTongue</Link>
                     <Menu horizontal className="p-0 hidden lg:flex">
                         <Menu.Item className="">
                             <Link to="/">Dictionary</Link>
