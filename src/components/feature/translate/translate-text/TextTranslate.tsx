@@ -42,7 +42,7 @@ const TextTranslate = (props: ITranslateProps) => {
   }
 
   return (
-    <div className="w-full text-center bg-white dark:bg-slate-800 rounded-lg shadow-lg" style={{minHeight: '350px'}}>
+    <div className="w-full text-center bg-white rounded-lg shadow-lg" style={{minHeight: '350px'}}>
       <div className="grid sm:grid-cols-1 md:grid-cols-2 divide-x h-min" style={{minHeight: '350px'}}>
         <div className="h-full">
           <TextAreaForm onChangeEvt={setTextToSearch}

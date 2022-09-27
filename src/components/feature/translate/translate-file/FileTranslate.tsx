@@ -39,7 +39,7 @@ const FileTranslate = (props: ITranslateProps) => {
 
 
   return (
-    <div className="w-full p-6 text-center bg-white dark:bg-slate-800 rounded-lg shadow-lg">
+    <div className="w-full p-6 text-center bg-white rounded-lg shadow-lg">
       <>
         <h3 className="mb-2 text-2xl font-medium">Select a document</h3>
         <p className="text-md mb-8 text-grey">Accepted format file: .txt, .odt, .odp, .docx, .pptx</p>
