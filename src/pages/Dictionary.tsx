@@ -38,7 +38,7 @@ const Dictionary = () => {
                     </div>
                 </div>
                 <div className="order-first md:order-last">
-                    <img src='/dictionary-wall.png' className="object-cover"/>
+                    <img src={process.env.PUBLIC_URL + '/dictionary-wall.png'} className="object-cover" alt="dictionary-wall-image"/>
                 </div>
             </div>
 
