@@ -26,7 +26,7 @@ const Phonetic = ({data}: PhoneticProps) => {
                     { data.audio && 
                         <span className="ml-4">
                             <Tooltip message="Play pronunciation">
-                                <img src="/play.png" alt="play icon" className="w-5 cursor-pointer" onClick={() => handleClickPlayAudio(data.audio)}/>
+                                <img src={process.env.PUBLIC_URL + '/play.png'} alt="play icon" className="w-5 cursor-pointer" onClick={() => handleClickPlayAudio(data.audio)}/>
                             </Tooltip>
                         </span>
                     }
