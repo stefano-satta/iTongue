@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/iTongue/static/css/main.dc6edf44.css",
-    "main.js": "/iTongue/static/js/main.ece4e0f4.js",
+    "main.css": "/iTongue/static/css/main.6bb271de.css",
+    "main.js": "/iTongue/static/js/main.3f0fb03a.js",
     "static/js/787.0d9d62fb.chunk.js": "/iTongue/static/js/787.0d9d62fb.chunk.js",
     "index.html": "/iTongue/index.html",
-    "main.dc6edf44.css.map": "/iTongue/static/css/main.dc6edf44.css.map",
-    "main.ece4e0f4.js.map": "/iTongue/static/js/main.ece4e0f4.js.map",
+    "main.6bb271de.css.map": "/iTongue/static/css/main.6bb271de.css.map",
+    "main.3f0fb03a.js.map": "/iTongue/static/js/main.3f0fb03a.js.map",
     "787.0d9d62fb.chunk.js.map": "/iTongue/static/js/787.0d9d62fb.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.dc6edf44.css",
-    "static/js/main.ece4e0f4.js"
+    "static/css/main.6bb271de.css",
+    "static/js/main.3f0fb03a.js"
   ]
 }
