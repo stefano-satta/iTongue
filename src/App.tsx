@@ -13,7 +13,7 @@ function App() {
         <Header/>
         <div className="container mx-auto p-6 flex-grow">
           <Routes>
-            <Route path='/iTongue' element={<Navigate to='/dictionary' replace/>}/>
+            <Route path='/' element={<Navigate to='/dictionary' replace/>}/>
             <Route path='/dictionary' element={<Dictionary/>}/>
             <Route path='/translate' element={<Translate/>}/>
           </Routes>
