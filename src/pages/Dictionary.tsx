@@ -32,13 +32,13 @@ const Dictionary = () => {
             <div className="grid sm:grid-cols-1 md:grid-cols-2">
                 <div className="flex flex-col aligns-center justify-center w-full order-last md:order-first">
                     <div className="text-center md:text-left">
-                        <h1 className="text-5xl font-bold mb-4">Get a quick, <br/> Free translation</h1>
+                        <h1 className="text-5xl font-bold mb-4">Get a quick, <br/> Free dictionary</h1>
                             <InputForm register={register} formControlName="prova" onChangeEvt={handleChangeWord} className="w-3/4 rounded-full" autoComplete={'false'} placeholder={'Insert a word'}/>
                             <Button loading={isLoading} onClick={getMeaning} color="primary" className="text-white w-1/4 rounded-full mt-2">Search</Button>
                     </div>
                 </div>
                 <div className="order-first md:order-last">
-                    <img src={process.env.PUBLIC_URL + '/dictionary-wall.png'} className="object-cover" alt="dictionary-wall-image"/>
+                    <img src={process.env.PUBLIC_URL + '/dictionary-wall.png'} className="object-cover" alt="dictionary-wall"/>
                 </div>
             </div>
 
