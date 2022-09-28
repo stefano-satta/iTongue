@@ -2,25 +2,17 @@ import useFetch from "../../../../hooks/useFetch";
 import { getTextTranslation } from "../../../../utils/api";
 import TextAreaForm from "../../../common/forms/textarea/TextAreaForm";
 import { AxiosError } from "axios";
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import Spinner from "../../../common/spinner/Spinner";
 
 
 const TextTranslate = (props: ITranslateProps) => {
   const { langFrom, langTo } = props;
   const [textToSearch, setTextToSearch] = useState<string>('');
-  const {data, setData, error, setError, isLoading, setLoading} = useFetch<ITextTranslationResponse>();
-  let timer: ReturnType<typeof setTimeout>;
-
-  useEffect(() => {
-    clearTimeout(timer);
-    getTranslation();
-  }, [langFrom, langTo, textToSearch])
+  const {data, setData, setError, isLoading, setLoading} = useFetch<ITextTranslationResponse>();
   
-
-  const getTranslation = () => {
+  const getTranslation = useCallback(() => {
     if (langFrom && langTo && textToSearch) {
-      timer = setTimeout(() => {
         setError(null);
         setLoading(true);
         setData(undefined);
@@ -35,11 +27,16 @@ const TextTranslate = (props: ITranslateProps) => {
             .then((res: ITextTranslationResponse) => setData(res))
             .catch((error: AxiosError) => setError(error.response?.data))
             .finally(() => setLoading(false))
-      }, 2000);
-
-      
     }
-  }
+  }, [langFrom, langTo, textToSearch, setData, setError, setLoading])
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      getTranslation();
+    }, 1800);
+
+    return () => clearTimeout(timer);
+  }, [langFrom, langTo, textToSearch, getTranslation])
 
   return (
     <div className="w-full text-center bg-white rounded-lg shadow-lg" style={{minHeight: '350px'}}>

@@ -23,10 +23,10 @@ const Header = () => {
                         </Button>
                         <Dropdown.Menu tabIndex={0} className="w-52 menu-compact mt-3">
                             <Dropdown.Item href="/">
-                                Dictionary
+                                <Link to="/">Dictionary</Link>
                             </Dropdown.Item>
                             <Dropdown.Item href="/translate">
-                                Translate
+                                <Link to="/translate">Translate</Link>
                             </Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>

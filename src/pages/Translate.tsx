@@ -14,7 +14,7 @@ enum TabEnum {
 
 
 const Translate = () => {
-  const [tab, setTab] = useState<TabEnum>(TabEnum.FILE);
+  const [tab, setTab] = useState<TabEnum>(TabEnum.TXT);
   const {data, setData, setError, setLoading} = useFetch<Language[]>();
   const [langSelected, setLangSelected] = useState<{fromLang: string, toLang: string}>({fromLang: '', toLang: ''});
 
